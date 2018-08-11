@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NoteCreateForm/> (Snapshot Test) renders right 1`] = `
+<form
+  onChange={[Function]}
+  onSubmit={[Function]}
+>
+  <input
+    name="title"
+    placeholder="title"
+    type="text"
+    value=""
+  />
+  <textarea
+    name="content"
+    placeholder="content"
+    value=""
+  />
+  <label>
+    <span>
+      editing
+    </span>
+    <input
+      name="editing"
+      type="checkbox"
+    />
+  </label>
+  <label>
+    <span>
+      completed
+    </span>
+  </label>
+  <input
+    name="completed"
+    type="checkbox"
+  />
+  <button>
+    create note
+  </button>
+</form>
+`;

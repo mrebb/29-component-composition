@@ -1,0 +1,30 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+nav a {
+  margin-right: 1em;
+}
+
+form {
+  border: 2px solid rgb(19, 17, 17);
+  padding: 2em;
+}
+.updateForm {
+  border: 1px solid cornflowerblue;
+  display:block;
+  margin: 0.15em;
+}
+
+form input,
+form textarea,
+for button {
+  display: block;
+  margin: 1em;
+}
+
+span {
+  float: left;
+  margin-right: 1em;
+}

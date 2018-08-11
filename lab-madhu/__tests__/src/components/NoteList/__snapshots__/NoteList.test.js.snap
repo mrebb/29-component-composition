@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NoteList/> (Snapshot Test) renders right 1`] = `<ul />`;
+
+exports[`<NotesCreateForm/> (Snapshot Test) renders right 1`] = `<ul />`;
