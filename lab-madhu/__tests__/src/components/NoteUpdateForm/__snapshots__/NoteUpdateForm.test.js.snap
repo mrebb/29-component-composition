@@ -1,26 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NoteCreateForm/> (Snapshot Test) renders right 1`] = `
+exports[`<NoteUpdateForm/> (Snapshot Test) renders right 1`] = `
 <form
+  className="updateForm"
   onChange={[Function]}
   onSubmit={[Function]}
 >
   <input
+    defaultValue="test title"
     name="title"
     placeholder="title"
     type="text"
-    value=""
   />
   <textarea
+    defaultValue="sample content"
     name="content"
     placeholder="content"
-    value=""
   />
   <label>
     <span>
       editing
     </span>
     <input
+      defaultChecked={false}
       name="editing"
       type="checkbox"
     />
@@ -31,11 +33,17 @@ exports[`<NoteCreateForm/> (Snapshot Test) renders right 1`] = `
     </span>
   </label>
   <input
+    defaultChecked={false}
     name="completed"
     type="checkbox"
   />
   <button>
-    create note
+    update note
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    cancel
   </button>
 </form>
 `;

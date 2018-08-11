@@ -1,48 +1,65 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow, mount, render } from 'enzyme';
-
+import { shallow,mount } from 'enzyme';
 import NoteCreateForm from '../../../../src/components/app/NoteCreateForm/NoteCreateForm';
 
-describe('NotesCreateForm component', () => {
-  it('is alive at application start', () => {
-    let notesForm = shallow(<NoteCreateForm/>);
-    expect(notesForm.find('form.notesForm').exists()).toBe(true);
+describe('NoteCreateForm component', () => {
+  it('should render', () => {
+    shallow(<NoteCreateForm/>);
   });
-  it('renders a title input', () => {
-    expect(shallow(<NoteCreateForm/>).find('#title').length).toEqual(1);
+  it('should have initial state', () => {
+    const wrapper = mount(<NoteCreateForm/>);
+    expect(wrapper).toHaveState({
+      editing: false,
+      completed: false,
+      content: '',
+      title: '',
+    });
   });
-  it('renders a content input', () => {
-    expect(shallow(<NoteCreateForm/>).find('#content').length).toEqual(1);
+  it('should handle form changes', () => {
+    const wrapper = mount(<NoteCreateForm />);
+    const instance = wrapper.instance();
+    const event = {
+      target: {
+        name: 'title',
+        value: 'Hello world',
+        type: 'text',
+      },
+    };
+    instance.onChange(event);
+
+    expect(wrapper.state('title')).toBe('Hello world');
   });
-  describe('Title input', () => {
+
+  it('should submit a new note', done => {
   
-    it('should respond to change event and change the state of the NoteCreateForm Component', () => {
-     
-      const notesForm = shallow(<NoteCreateForm />);
-      notesForm.find('#title').simulate('change', {target: {name: 'title', value: 'fruits'}});
-     
-      expect(notesForm.state('title')).toEqual('fruits');
-    });
-  });
-   
-  describe('Content input', () => {
-    
-    it('should respond to change event and change the state of the NoteCreateForm Component', () => {
-     
-      const notesForm = shallow(<NoteCreateForm />);
-      notesForm.find('#content').simulate('change', {target: {name: 'content', value: 'buy fruits from store'}});
-     
-      expect(notesForm.state('content')).toEqual('buy fruits from store');
-    });
+    const onSubmit = note => {
+      expect(note.id).not.toBe('');
+      expect(note.title).toBe('Hello world');
+      done();
+    };
+    const wrapper = mount(<NoteCreateForm onSubmit={onSubmit} />);
+    const instance = wrapper.instance();
+    const e = {
+      target: {
+        name: 'title',
+        value: 'Hello world',
+        type: 'text',
+      },
+    };
+    instance.onChange(e);
+    const event = {
+      preventDefault: () => {},
+    };
+
+    instance.onSubmit(event);
   });
 });
 
-
-describe('<NotesCreateForm/> (Snapshot Test)', () => {
+describe('<NoteCreateForm/> (Snapshot Test)', () => {
   it('renders right', () => {
     const component = renderer.create(
-      <NoteCreateForm />
+      <NoteCreateForm/>
     );
 
     let tree = component.toJSON();

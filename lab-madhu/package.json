@@ -11,6 +11,12 @@
     "start": "node ./src/server.js"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "unmockedModulePathPatterns": [
+      "react",
+      "enzyme",
+      "jest-enzyme"
+    ],
     "testPathIgnorePatterns": [
       "jest-setup.js"
     ],
@@ -48,12 +54,14 @@
     "html-webpack-plugin": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.1.0",
+    "jest-enzyme": "^6.0.3",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
+    "react-scripts": "^1.1.4",
     "react-test-renderer": "^16.4.1",
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^7.0.3",
@@ -67,6 +75,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
+    "enzyme-matchers": "^6.0.3",
     "eslint": "^3.19.0"
   }
 }
